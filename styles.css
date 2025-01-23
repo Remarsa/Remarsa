@@ -130,18 +130,63 @@ body {
     }
 }
 
-/* Page Header */
+/* Encabezado con fondo animado */
 .page-header {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    padding: 8rem 0 3rem;
+    position: relative;
+    height: 70vh; /* Ocupa el 70% de la altura del viewport */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-bottom: 2rem;
+    color: white;
+    background-size: cover; /* Hace que la imagen cubra todo el área */
+    background-position: center; /* Asegura que la imagen esté centrada */
+    background-repeat: no-repeat; /* Evita repeticiones */
 }
 
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover; /* Hace que la imagen cubra todo el área */
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.7; /* Ajusta opacidad para mayor visibilidad */
+    animation: cambiarFondoHeader 35s infinite;
+}
+
+/* Animación de cambio de fondo */
+@keyframes cambiarFondoHeader {
+    0%, 100% { background-image: url('fotos/foto1.jpg'); }
+    14.28% { background-image: url('fotos/foto2.jpg'); }
+    28.57% { background-image: url('fotos/foto3.jpg'); }
+    42.85% { background-image: url('fotos/foto4.jpg'); }
+    57.14% { background-image: url('fotos/foto5.jpg'); }
+    71.42% { background-image: url('fotos/foto6.jpg'); }
+}
+
+/* Texto dentro del encabezado */
 .page-header h1 {
-    font-size: 2.5rem;
+    position: relative;
+    z-index: 1; /* Asegura que el texto esté encima del fondo */
+    font-size: 2.5rem; /* Tamaño del texto ajustado */
     margin: 0;
+    padding: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Sombra para destacar más */
+}
+
+/* Texto secundario */
+.page-header p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 /* Sections */
@@ -219,6 +264,7 @@ section {
 }
 
 /* Servicios */
+
 .servicio-card ul {
     list-style: none;
     padding: 0;
@@ -555,3 +601,19 @@ footer {
     padding: 20px;
 }
 
+
+
+/* Hacer la imagen logo responsiva solo en dispositivos móviles */
+.animate-text img {
+    width: auto;  /* Mantener el tamaño original en computadoras */
+    height: auto; /* Mantener la proporción de la imagen */
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    .animate-text img {
+        width: 100%;  /* La imagen ocupará el 100% del contenedor en pantallas pequeñas */
+        height: auto; /* Mantener la proporción */
+        max-width: 500px; /* Establecer un tamaño máximo en pantallas pequeñas */
+    }
+}
