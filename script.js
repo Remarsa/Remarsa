@@ -68,3 +68,36 @@ function toggleBurger() {
     burger.classList.toggle('toggle');
     nav.classList.toggle('nav-active');
 }
+
+
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevenir el envío normal del formulario
+
+    // Obtener los valores de los campos del formulario
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const telefono = document.getElementById('telefono').value;
+    const mensaje = document.getElementById('mensaje').value;
+
+    // Crear el mensaje que se enviará a través de WhatsApp
+    const mensajeWhatsapp = `*Nombre:* ${nombre}%0A*Email:* ${email}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje}`;
+
+    // Número de teléfono de destino en WhatsApp
+    const numeroWhatsapp = '994802470';
+
+    // Crear la URL para redirigir al usuario a WhatsApp con los parámetros
+    const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${mensajeWhatsapp}`;
+
+    // Abrir una nueva ventana o pestaña
+    const nuevaVentana = window.open('', '_blank'); // Abrimos una nueva pestaña en blanco
+
+    // Agregar contenido a la nueva ventana (puedes personalizar lo que desees mostrar)
+    nuevaVentana.document.write('<h2>Gracias por contactarnos</h2>');
+    nuevaVentana.document.write('<p>Estamos redirigiéndote a WhatsApp con toda la información que enviaste.</p>');
+
+    // Redirigir a WhatsApp después de 3 segundos (puedes ajustar el tiempo)
+    setTimeout(function() {
+        nuevaVentana.location.href = urlWhatsapp;
+    }, 3000); // Redirige después de 3 segundos
+});
