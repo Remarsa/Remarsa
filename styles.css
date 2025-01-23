@@ -28,7 +28,7 @@ body {
 /* Navbar */
 .navbar {
     background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
@@ -44,11 +44,18 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 0; /* Elimina cualquier padding del contenedor */
+}
+
+.logo {
+    margin-left: -75; /* Asegura que esté completamente pegado al borde */
+    padding-left: 0; /* Asegura que no haya espacio adicional */
 }
 
 .logo img {
     height: 60px;
     transition: transform 0.3s ease;
+    margin-left: 0; /* Elimina cualquier margen extra */
 }
 
 .logo img:hover {
@@ -617,3 +624,7 @@ footer {
         max-width: 500px; /* Establecer un tamaño máximo en pantallas pequeñas */
     }
 }
+
+
+
+
