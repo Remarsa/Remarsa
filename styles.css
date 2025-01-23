@@ -482,3 +482,76 @@ footer {
 .mt-2 {
     margin-top: 2rem;
 }
+
+/* Estilos generales para la tarjeta */
+.servicio-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+/* Imagen responsiva */
+.servicio-card img.servicio-imagen {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto 15px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .servicio-card img.servicio-imagen {
+        max-width: 100%; /* Imagen ocupará todo el ancho disponible */
+        margin: 0 auto 10px;
+    }
+
+    .servicio-card {
+        padding: 15px; /* Reduce el padding para móviles */
+    }
+}
+
+/* Estilos generales para las tarjetas */
+.servicio-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+/* Imagen responsiva */
+.servicio-card img.servicio-imagen {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto 15px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .servicio-card img.servicio-imagen {
+        max-width: 100%;
+        margin: 0 auto 10px;
+    }
+
+    .servicio-card {
+        padding: 15px;
+    }
+}
+
+/* Distribución de tarjetas en grilla para pantallas más grandes */
+.servicio-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
