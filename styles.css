@@ -1,6 +1,6 @@
 :root {
     --primary-blue: #0047AB;
-    --primary-green: #00A650;
+    --primary-green: #159151;
     --white: #ffffff;
     --gray-light: #f5f5f5;
     --gray: #666666;
@@ -47,8 +47,9 @@ body {
     padding: 0; /* Elimina cualquier padding del contenedor */
 }
 
+/* Estilos para el logo en pantallas grandes (escritorio) */
 .logo {
-    margin-left: -75; /* Asegura que esté completamente pegado al borde */
+    margin-left: -75px; /* Asegura que esté completamente pegado al borde */
     padding-left: 0; /* Asegura que no haya espacio adicional */
 }
 
@@ -61,6 +62,28 @@ body {
 .logo img:hover {
     transform: scale(1.05);
 }
+
+/* Estilos para el logo en dispositivos móviles (pantallas pequeñas) */
+@media (max-width: 768px) {
+    .logo {
+        padding-left: 0; /* Elimina el padding extra en dispositivos móviles */
+        display: flex;
+        justify-content: flex-start; /* Alinea el logo a la izquierda */
+        align-items: center; /* Centra el logo verticalmente */
+        transform: translateX(60px); /* Mueve el logo 10px hacia la derecha */
+    }
+
+    .logo img {
+        height: 10px; /* Ajusta el tamaño del logo en dispositivos móviles */
+        max-width: 40%; /* Asegura que el logo no se desborde */
+        height: auto; /* Mantiene la proporción del logo */
+    }
+
+    .logo img:hover {
+        transform: scale(1.05); /* Mantiene el efecto hover en móviles */
+    }
+}
+
 
 .nav-links {
     display: flex;
@@ -105,7 +128,7 @@ body {
 .hero {
     height: 100vh;
     padding-top: 80px;
-    background: linear-gradient(rgba(0,71,171,0.7), rgba(0,166,80,0.7)), url('hero-bg.jpg');
+    background: linear-gradient(rgba(76, 241, 10, 0.7), rgba(153, 252, 200, 0.7)), url('hero-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -469,6 +492,40 @@ footer {
     text-align: center;
 }
 
+/* Estilo responsivo para dispositivos móviles */
+@media (max-width: 768px) {
+    /* Cambiar la estructura de las columnas a una sola columna */
+    .footer-content {
+        grid-template-columns: 1fr; /* Poner todo en una columna */
+        padding: 0 10px; /* Espacio adicional para los márgenes */
+    }
+
+    /* Alinear todo el contenido a la izquierda */
+    .footer-section {
+        margin-left: 0; /* Eliminar el margen negativo */
+        text-align: left; /* Alineación del texto */
+    }
+
+    /* Asegurar que las redes sociales estén alineadas */
+    .social-links {
+        display: flex;
+        justify-content: flex-start; /* Alinea los íconos a la izquierda */
+    }
+
+    /* Ajustar el tamaño de los íconos sociales en pantallas pequeñas */
+    .social-links a {
+        font-size: 1.3rem; /* Reducir tamaño de los íconos */
+        margin-right: 10px; /* Espacio entre íconos */
+    }
+
+    /* Cambiar el estilo del pie de página */
+    .footer-bottom {
+        text-align: left; /* Alinea el texto a la izquierda */
+        padding-left: 10px; /* Añadir espacio a la izquierda */
+    }
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .burger {
@@ -514,6 +571,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 
 /* Animations */
 .animate-on-scroll {
@@ -630,5 +688,43 @@ footer {
 }
 
 
+
+
+.animate-text-delay {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.separator {
+    width: 100%;
+    height: 20px; /* Aumenta más la altura de la línea para que sea más gruesa */
+    background-color: var(--primary-green); /* Color verde intenso */
+    margin-top: 10px;
+    margin-bottom: 20px; /* Espacio debajo de la línea */
+}
+
+
+
+
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.separator {
+    width: 100%;
+    height: 2px; /* Altura de la línea */
+    margin-top: 10px;
+    margin-bottom: 20px; /* Espacio debajo de la línea */
+}
+
+.transparent {
+    background-color: rgba(255, 255, 255, 0); /* Línea completamente transparente */
+}
 
 
