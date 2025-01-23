@@ -434,6 +434,10 @@ footer {
     gap: 2rem;
 }
 
+.footer-section {
+    margin-left: -75px; /* Mueve el contenido hacia la izquierda */
+}
+
 .footer-section h3 {
     margin-bottom: 1rem;
     font-size: 1.2rem;
