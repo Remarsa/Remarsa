@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
 
             document.querySelector(this.getAttribute('href')).scrollIntoView({
@@ -69,8 +69,7 @@ function toggleBurger() {
     nav.classList.toggle('nav-active');
 }
 
-
-
+// Enviar formulario a WhatsApp
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevenir el envío normal del formulario
 
@@ -100,4 +99,14 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     setTimeout(function() {
         nuevaVentana.location.href = urlWhatsapp;
     }, 3000); // Redirige después de 3 segundos
+});
+
+// Manejo dinámico de la clase 'active' en los enlaces del menú
+const navLinks = document.querySelectorAll('.nav-links a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        navLinks.forEach(link => link.classList.remove('active')); // Elimina la clase 'active' de todos los enlaces
+        this.classList.add('active'); // Añade la clase 'active' al enlace clickeado
+    });
 });

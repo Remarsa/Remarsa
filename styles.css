@@ -119,7 +119,7 @@ body {
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: var(--primary-blue);
+    background-color: white;
     margin: 5px;
     transition: all 0.3s ease;
 }
@@ -763,4 +763,139 @@ footer {
 
 .navbar-blue .nav-links .active {
     font-weight: bold;
+}
+
+
+.navbar-blue .nav-links a {
+    text-decoration: none;
+    color: white; /* Color original */
+    font-size: 1rem;
+    transition: color 0.3s ease; /* Efecto de transición para el cambio de color */
+}
+
+.navbar-blue .nav-links a:hover {
+    color: #2F855A; /* Verde cuando se pasa el ratón por encima */
+}
+
+.navbar-blue .nav-links .active {
+    color: #2F855A; /* Verde cuando el enlace está activo */
+    font-weight: bold; /* Aumenta el peso de la fuente para destacarlo */
+}
+
+
+
+/* Estilo para la sección completa */
+.about-us {
+    background-color: #2ecc71; /* Fondo verde */
+    padding: 60px 20px; /* Espaciado interno */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo animado */
+.about-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.05));
+    transform: skewX(-30deg);
+    animation: moveBackground 6s linear infinite;
+    z-index: 1;
+}
+
+@keyframes moveBackground {
+    0% {
+        transform: translateX(-50%) skewX(-30deg);
+    }
+    100% {
+        transform: translateX(50%) skewX(-30deg);
+    }
+}
+
+/* Contenedor principal */
+.about-us .container {
+    position: relative;
+    z-index: 2; /* Asegurar que el contenido esté sobre el fondo animado */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Fondo transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+}
+
+/* Texto principal */
+.about-text {
+    font-family: 'Poppins', sans-serif; /* Fuente profesional */
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff; /* Texto blanco */
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Letras en mayúsculas */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.about-text:hover {
+    color: #d1ffcc; /* Color más claro al pasar el cursor */
+    transform: scale(1.05); /* Efecto de zoom al pasar el cursor */
+}
+
+/* Subtítulos */
+.about-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #f9f9f9; /* Texto claro */
+    line-height: 1.8;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.about-subtitle:hover {
+    color: #eaffd9; /* Color más claro al pasar el cursor */
+    transform: translateY(-3px); /* Desplazamiento hacia arriba */
+}
+
+/* Separadores */
+.about-us .separator {
+    width: 60px;
+    height: 3px;
+    background-color: #fff;
+    margin: 20px auto;
+    border-radius: 3px; /* Bordes redondeados */
+    transition: width 0.3s ease-in-out;
+}
+
+.about-us .separator:hover {
+    width: 100px; /* Ancho mayor al pasar el cursor */
+}
+
+.about-us .separator.transparent {
+    background-color: transparent;
+    height: 10px;
+}
+
+/* Animación suave al cargar */
+.about-us .about-text,
+.about-us .about-subtitle {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
