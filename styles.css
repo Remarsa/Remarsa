@@ -175,6 +175,108 @@ body {
     background-position: center; /* Asegura que la imagen esté centrada */
     background-repeat: no-repeat; /* Evita repeticiones */
 }
+/* Menú hamburguesa general */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+    color: white;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón del menú hamburguesa */
+.menu-toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 25px;
+    z-index: 110;
+}
+
+.menu-toggle div {
+    background-color: white;
+    height: 3px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Animación del botón al abrir el menú */
+.menu-toggle.open .line1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .line2 {
+    opacity: 0;
+}
+
+.menu-toggle.open .line3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Contenedor de enlaces del menú */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
+    width: 200px;
+    padding: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 100;
+}
+
+/* Mostrar menú al activarse */
+.nav-links.active {
+    display: flex;
+}
+
+/* Estilo de enlaces */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+/* Estilo específico para .page-header y .hero */
+.hero, .page-header {
+    position: relative;
+    padding-top: 80px; /* Asegura espacio para el menú */
+}
+
+/* Ajustes para pantallas más grandes */
+@media screen and (min-width: 768px) {
+    .menu-toggle {
+        display: none; /* Esconde el botón en pantallas grandes */
+    }
+
+    .nav-links {
+        display: flex; /* Muestra los enlaces como una fila */
+        flex-direction: row;
+        position: static;
+        background: none;
+        width: auto;
+        box-shadow: none;
+    }
+}
+
 
 .page-header::before {
     content: '';
@@ -190,6 +292,8 @@ body {
     opacity: 0.7; /* Ajusta opacidad para mayor visibilidad */
     animation: cambiarFondoHeader 35s infinite;
 }
+
+
 
 /* Animación de cambio de fondo */
 @keyframes cambiarFondoHeader {
@@ -898,4 +1002,221 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+  
+
+/* Estilo básico para las enlaces de navegación */
+
+
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-links {
+      position: fixed;
+      right: -100%;
+      top: 80px;
+      flex-direction: column;
+      background-color: #1e3a8a;
+      width: 100%;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+  
+    .nav-links.active {
+      right: 0;
+    }
+  
+    .nav-links li {
+      margin: 1.5rem 0;
+    }
+  
+    .menu-toggle.toggle .line1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+  
+    .menu-toggle.toggle .line2 {
+      opacity: 0;
+    }
+  
+    .menu-toggle.toggle .line3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+  
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffd700;
+}
+
+/* Estilos para el logo */
+.logo img {
+    width: 250px;
+    height: auto;
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    width: 40px; /* Aumento el tamaño del área del botón */
+    height: 30px; /* Aumento la altura del área del botón */
+    position: relative;
+}
+
+.menu-toggle div {
+    width: 30px; /* Aumento el tamaño de las líneas */
+    height: 4px;  /* Aumento la altura de las líneas */
+    background-color: white;
+    margin: 6px 0; /* Aumento el espacio entre las líneas */
+    transition: all 0.3s ease;
+}
+
+/* Estilo del logo para dispositivos normales (computadoras) */
+.logo img {
+    width: 350px; /* Tamaño normal para computadoras */
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .nav-links {
+      position: fixed;
+      right: -100%;
+      top: 80px;
+      flex-direction: column;
+      background-color: #1e3a8a;
+      width: 100%;
+      height: calc(100vh - 80px);
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+  
+    .nav-links.active {
+      right: 0;
+    }
+  
+    .nav-links li {
+      margin: 1.5rem 0;
+    }
+  
+    .nav-links a {
+      font-size: 1.9rem;
+    }
+  
+    .menu-toggle.toggle .line1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+  
+    .menu-toggle.toggle .line2 {
+      opacity: 0;
+    }
+  
+    .menu-toggle.toggle .line3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+  
+  .policy-header {
+    position: relative;
+    height: 70vh; /* Ocupa el 70% de la altura del viewport */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background: url('fotos/foto8.jpg'); /* Ruta de tu imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el área */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita repeticiones */
+}
+
+/* Superposición para transparencia */
+.policy-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Fondo negro semitransparente */
+    z-index: -1; /* Coloca la superposición detrás del contenido */
+    opacity: 0.7; /* Ajusta opacidad según el nivel deseado */
+}
+
+/* Título de la Policy Header */
+.policy-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 1; /* Coloca el título sobre el fondo */
+    animation: fadeInUp 1s ease forwards;
+}
+
+
+
+/* Nueva sección para solo un título */
+.section-policy {
+    height: auto; /* Altura automática según el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px; /* Espaciado interno */
+    background-color: transparent; /* Sin fondo */
+}
+
+/* Estilo del título */
+.section-policy h1 {
+    font-size: 3rem; /* Tamaño del título */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black; /* Cambia el color según prefieras */
+    letter-spacing: 2px; /* Espaciado entre letras */
 }
