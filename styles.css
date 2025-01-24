@@ -128,7 +128,7 @@ body {
 .hero {
     height: 100vh;
     padding-top: 80px;
-    background: linear-gradient(rgba(76, 241, 10, 0.7), rgba(153, 252, 200, 0.7)), url('hero-bg.jpg');
+    background: url('fotos/inicio.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -690,14 +690,17 @@ footer {
 
 
 
-
+/* Para las letras del .animate-text-delay */
 .animate-text-delay {
     font-size: 1.2rem;
-    color: var(--primary-blue);
+    color: black; /* El color de las letras es negro */
     text-align: center;
     margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco semi-transparente para las letras */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave para hacer el texto más legible */
 }
 
+/* Para las líneas separadoras */
 .separator {
     width: 100%;
     height: 20px; /* Aumenta más la altura de la línea para que sea más gruesa */
@@ -706,16 +709,18 @@ footer {
     margin-bottom: 20px; /* Espacio debajo de la línea */
 }
 
-
-
-
-
+/* Para el .subtitle */
 .subtitle {
     font-size: 1.2rem;
-    color: var(--primary-blue);
+    color: black; /* El color de las letras es negro */
     text-align: center;
     margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco semi-transparente para las letras */
+    padding: 5px; /* Espaciado alrededor del texto */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave para mejorar la visibilidad */
 }
+
+
 
 .separator {
     width: 100%;
@@ -724,8 +729,38 @@ footer {
     margin-bottom: 20px; /* Espacio debajo de la línea */
 }
 
+/* La línea transparente */
 .transparent {
     background-color: rgba(255, 255, 255, 0); /* Línea completamente transparente */
 }
 
 
+.navbar-blue {
+    background-color: #1E3A8A; /* Azul que quieres */
+    padding: 10px 0;
+}
+
+.navbar-blue .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-blue .nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-blue .nav-links li {
+    margin: 0 15px;
+}
+
+.navbar-blue .nav-links a {
+    text-decoration: none;
+    color: white; /* Color de texto blanco */
+    font-size: 1rem;
+}
+
+.navbar-blue .nav-links .active {
+    font-weight: bold;
+}
