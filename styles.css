@@ -74,7 +74,7 @@ body {
     }
 
     .logo img {
-        height: 10px; /* Ajusta el tamaño del logo en dispositivos móviles */
+        height: 20px; /* Ajusta el tamaño del logo en dispositivos móviles */
         max-width: 40%; /* Asegura que el logo no se desborde */
         height: auto; /* Mantiene la proporción del logo */
     }
@@ -841,8 +841,9 @@ footer {
 
 .navbar-blue {
     background-color: #1E3A8A; /* Azul que quieres */
-    padding: 10px 0;
+    padding: 0px 0; /* Hace la franja más angosta */
 }
+
 
 .navbar-blue .container {
     display: flex;
@@ -1112,7 +1113,7 @@ footer {
 
 /* Estilo del logo para dispositivos normales (computadoras) */
 .logo img {
-    width: 350px; /* Tamaño normal para computadoras */
+    width: 250px; /* Tamaño normal para computadoras */
     height: auto;
 }
 
@@ -1162,7 +1163,7 @@ footer {
   
   .policy-header {
     position: relative;
-    height: 70vh; /* Ocupa el 70% de la altura del viewport */
+    height: 50vh; /* Ocupa el 70% de la altura del viewport */
     width: 100%; /* Asegura que ocupe todo el ancho */
     overflow: hidden;
     display: flex;
@@ -1219,4 +1220,13 @@ footer {
     text-transform: uppercase;
     color: black; /* Cambia el color según prefieras */
     letter-spacing: 2px; /* Espaciado entre letras */
+}
+
+
+
+.separador {
+    border: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.1); /* Línea sutil y transparente */
+    width: 100%; /* Ajusta el ancho del separador */
+    margin: 10px 0; /* Espaciado arriba y abajo */
 }
