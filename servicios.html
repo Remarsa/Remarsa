@@ -1,39 +1,324 @@
-<!-- servicios.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REMARSA - Servicios</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>REMARSA - Servicios Profesionales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0047ab;
+            --primary-green: #159151;
+            --secondary-blue: #1e3a8a;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #666666;
+            --black: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar-blue {
+            background-color: var(--secondary-blue);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 0.5rem 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-blue .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links li a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--primary-green);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 21px;
+            position: relative;
+        }
+
+        .menu-toggle div {
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        .carousel {
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .carousel-content {
+            text-align: center;
+            color: var(--white);
+            z-index: 2;
+        }
+
+        .carousel-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .servicios {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .servicio-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .servicio-imagen {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .servicio-content {
+            padding: 1.5rem;
+        }
+
+        .servicio-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .servicio-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .servicio-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .servicio-card ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--secondary-blue);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .carousel-content h1 {
+                font-size: 2rem;
+            }
+
+            .carousel-content p {
+                font-size: 1rem;
+            }
+
+            .servicios-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar-blue">
         <div class="container">
-            <a href="index.html" class="logo" style="margin-left: -75px;">
-                <img src="fotos/logo.png" alt="Logo">
+            <a href="index.html" class="logo">
+                <img src="fotos/logo.png" alt="Logo REMARSA">
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="valores.html">Valores</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="servicios.html" class="active">Servicios</a></li>
                 <li><a href="politica.html">Política</a></li>
                 <li><a href="certificados.html">Certificados</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
             <div class="menu-toggle">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </div>
     </nav>
-    
 
-    <header class="page-header">
-        <div class="container">
-            <h1>NUESTROS SERVICIOS</h1>
+    <header class="carousel">
+        <div class="carousel-item active" style="background-image: url('fotos/foto1.jpg');">
+            <div class="carousel-content">
+                <h1>Servicios Profesionales</h1>
+                <p>Soluciones integrales para la industria y la construcción</p>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('fotos/foto2.jpg');">
+            <div class="carousel-content">
+                <h1>Experiencia y Calidad</h1>
+                <p>Más de 20 años brindando servicios de excelencia</p>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('fotos/foto3.jpg');">
+            <div class="carousel-content">
+                <h1>Tecnología de Vanguardia</h1>
+                <p>Utilizamos las últimas tecnologías para optimizar nuestros servicios</p>
+            </div>
         </div>
     </header>
 
@@ -43,80 +328,90 @@
                 <div class="servicios-grid">
                     <div class="servicio-card">
                         <img src="fotos/foto1.jpg" alt="Estructuras Metálicas" class="servicio-imagen">
-                        <i class="fas fa-industry"></i>
-                        <h3>FABRICACIÓN Y MONTAJE DE ESTRUCTURAS METÁLICAS</h3>
-                        <ul>
-                            <li>Fabricación de estructuras metálicas</li>
-                            <li>Infraestructura metálica de planta de procesos industriales y mineros</li>
-                            <li>Fabricación y montaje de ductos</li>
-                            <li>Fabricación de escaleras, barandas, plataformas</li>
-                            <li>Fabricación de soporterías para tuberías</li>
-                        </ul>
+                        <div class="servicio-content">
+                            <i class="fas fa-industry"></i>
+                            <h3>Fabricación y Montaje de Estructuras Metálicas</h3>
+                            <ul>
+                                <li>Fabricación de estructuras metálicas</li>
+                                <li>Infraestructura metálica para plantas industriales y mineras</li>
+                                <li>Fabricación y montaje de ductos</li>
+                                <li>Fabricación de escaleras, barandas y plataformas</li>
+                                <li>Fabricación de soporterías para tuberías</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="servicio-card">
                         <img src="fotos/foto2.jpg" alt="Montaje y Mantenimiento Electromecánico" class="servicio-imagen">
-                        <i class="fas fa-tools"></i>
-                        <h3>SERVICIO DE MONTAJE Y MANTENIMIENTO ELECTROMECÁNICO</h3>
-                        <ul>
-                            <li>Mantenimiento preventivo y correctivo de bombas</li>
-                            <li>Mantenimiento de válvulas y motores</li>
-                            <li>Mantenimiento de tuberías</li>
-                            <li>Mantenimiento mecánico en general</li>
-                        </ul>
+                        <div class="servicio-content">
+                            <i class="fas fa-tools"></i>
+                            <h3>Montaje y Mantenimiento Electromecánico</h3>
+                            <ul>
+                                <li>Mantenimiento preventivo y correctivo de bombas</li>
+                                <li>Mantenimiento de válvulas y motores</li>
+                                <li>Mantenimiento de tuberías</li>
+                                <li>Mantenimiento mecánico general</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="servicio-card">
                         <img src="fotos/foto3.jpg" alt="Servicios Generales y Mantenimiento Industrial" class="servicio-imagen">
-                        <i class="fas fa-broom"></i>
-                        <h3>SERVICIO GENERALES Y MANTENIMIENTO INDUSTRIAL</h3>
-                        <ul>
-                            <li>Limpieza industrial, tanques, sumideros, espesadores</li>
-                            <li>Limpiezas de áreas de trabajo</li>
-                            <li>Limpieza de equipos industriales</li>
-                            <li>Limpieza industrial en general</li>
-                        </ul>
+                        <div class="servicio-content">
+                            <i class="fas fa-broom"></i>
+                            <h3>Servicios Generales y Mantenimiento Industrial</h3>
+                            <ul>
+                                <li>Limpieza industrial de tanques, sumideros y espesadores</li>
+                                <li>Limpieza de áreas de trabajo</li>
+                                <li>Limpieza de equipos industriales</li>
+                                <li>Servicios de limpieza industrial especializada</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="servicio-card">
-                        <img src="fotos/foto4.jpg" alt="Consultoría en Seguridad" class="servicio-imagen">
-                        <i class="fas fa-hard-hat"></i>
-                        <h3>ALQUILER DE EQUIPOS LIVIANOS Y PESADOS</h3>
-                        <ul>
-                            <li>Alquiler de camionetas</li>
-                            <li>Alquiler de camion de carga
-                                (Furgón, baranda telera, baranda rebatible,etc.)
-                            </li>
-                            <li>Alquiler de bolquete</li>
-                            <li>Alquiler de montacarga, mini cargador, cargador frontal, retroexcavadora.</li>
-                            <li>Alquiler de manlift.</li>
-                        </ul>
+                        <img src="fotos/foto4.jpg" alt="Alquiler de Equipos" class="servicio-imagen">
+                        <div class="servicio-content">
+                            <i class="fas fa-truck"></i>
+                            <h3>Alquiler de Equipos Livianos y Pesados</h3>
+                            <ul>
+                                <li>Alquiler de camionetas y camiones de carga</li>
+                                <li>Alquiler de volquetes</li>
+                                <li>Alquiler de montacargas y mini cargadores</li>
+                                <li>Alquiler de retroexcavadoras y cargadores frontales</li>
+                                <li>Alquiler de plataformas elevadoras (manlift)</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="servicio-card">
                         <img src="fotos/foto5.jpg" alt="Servicio de Pintura" class="servicio-imagen">
-                        <i class="fas fa-paint-roller"></i>
-                        <h3>SERVICIO DE PINTURA</h3>
-                        <ul>
-                            <li>Pintado de interiores y exteriores</li>
-                            <li>Saneamiento y rehabilitación</li>
-                            <li>Pintado de estructuras metálicas</li>
-                            <li>Pintado general de plantas industriales</li>
-                        </ul>
+                        <div class="servicio-content">
+                            <i class="fas fa-paint-roller"></i>
+                            <h3>Servicio de Pintura Industrial</h3>
+                            <ul>
+                                <li>Pintado de interiores y exteriores</li>
+                                <li>Saneamiento y rehabilitación de superficies</li>
+                                <li>Pintado de estructuras metálicas</li>
+                                <li>Pintado general de plantas industriales</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="servicio-card">
-                        <img src="fotos/foto6.jpg" alt="Obras de Ingeniería Civiles" class="servicio-imagen">
-                        <i class="fas fa-building"></i>
-                        <h3>OBRAS DE INGENIERÍA CIVILES</h3>
-                        <ul>
-                            <li>Movimiento de tierras</li>
-                            <li>Demoliciones y desmontajes</li>
-                            <li>Obras de concreto simple</li>
-                            <li>Albañilería y tabiquería</li>
-                        </ul>
+                        <img src="fotos/foto6.jpg" alt="Obras de Ingeniería Civil" class="servicio-imagen">
+                        <div class="servicio-content">
+                            <i class="fas fa-hard-hat"></i>
+                            <h3>Obras de Ingeniería Civil</h3>
+                            <ul>
+                                <li>Movimiento de tierras</li>
+                                <li>Demoliciones y desmontajes</li>
+                                <li>Obras de concreto simple y armli>
+                                <li>Obras de concreto simple y armado</li>
+                                <li>Albañilería y tabiquería</li>
+                            </ul>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
@@ -139,6 +434,29 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('toggle');
+            });
+
+            // Carousel functionality
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            let currentItem = 0;
+
+            function showNextItem() {
+                carouselItems[currentItem].classList.remove('active');
+                currentItem = (currentItem + 1) % carouselItems.length;
+                carouselItems[currentItem].classList.add('active');
+            }
+
+            setInterval(showNextItem, 5000); // Change slide every 5 seconds
+        });
+    </script>
 </body>
 </html>
+
