@@ -4,15 +4,272 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REMARSA - Contacto</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0047ab;
+            --primary-green: #159151;
+            --secondary-blue: #1e3a8a;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #666666;
+            --black: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar-blue {
+            background-color: var(--secondary-blue);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 0.5rem 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-blue .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links li a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--primary-green);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 21px;
+            position: relative;
+        }
+
+        .menu-toggle div {
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        .page-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: var(--gray-light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h2,
+        .contact-form h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            color: var(--primary-blue);
+            margin-right: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-green);
+        }
+
+        .map-section {
+            padding: 3rem 0;
+            background-color: var(--gray-light);
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--secondary-blue);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar-blue">
         <div class="container">
-            <a href="index.html" class="logo" style="margin-left: -75px;">
-                <img src="fotos/logo.png" alt="Logo">
+            <a href="index.html" class="logo">
+                <img src="fotos/logo.png" alt="Logo REMARSA">
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
@@ -20,90 +277,65 @@
                 <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="politica.html">Política</a></li>
                 <li><a href="certificados.html">Certificados</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
             </ul>
             <div class="menu-toggle">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </div>
     </nav>
-    
-    
-    
-    
+
     <header class="page-header">
         <div class="container">
-            <h1>CONTÁCTANOS</h1>
+            <h1>Contáctenos</h1>
+            <p>Estamos aquí para atender sus consultas y requerimientos</p>
         </div>
     </header>
 
     <main>
-        <section class="contacto">
+        <section class="contact-section">
             <div class="container">
-                <div class="contacto-grid">
-                    <div class="contacto-info">
-                        <h3>Información de Contacto</h3>
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Mz. A Cajamarquilla Lurigancho I Lima - PE</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-phone"></i>
-                            <p>+51 994 802 470</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <p>gerencia01.remarsa@gmail.com</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <p>ventas01.remarsa@gmail.com</p>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Información de Contacto</h2>
+                        <p><i class="fas fa-map-marker-alt"></i> Mz. A Cajamarquilla Lurigancho I Lima - PE</p>
+                        <p><i class="fas fa-phone"></i> +51 994 802 470</p>
+                        <p><i class="fas fa-envelope"></i> gerencia01.remarsa@gmail.com</p>
+                        <p><i class="fas fa-envelope"></i> ventas01.remarsa@gmail.com</p>
                     </div>
-                    <div class="contacto-form">
-                        <h3>Envíanos un Mensaje</h3>
-                        <hr class="separador">
-                        <hr class="separador">
-
-
-                        <form id="contactForm">
+                    <div class="contact-form">
+                        <h2>Envíenos un Mensaje</h2>
+                        <form id="contact-form">
                             <div class="form-group">
-                                <input type="text" id="nombre" name="nombre" required>
-                                <label for="nombre">Nombre</label>
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
+                                <label for="email">Correo Electrónico</label>
                                 <input type="email" id="email" name="email" required>
-                                <label for="email">Email</label>
                             </div>
                             <div class="form-group">
-                                <input type="tel" id="telefono" name="telefono" required>
-                                <label for="telefono">Teléfono</label>
+                                <label for="phone">Teléfono</label>
+                                <input type="tel" id="phone" name="phone">
                             </div>
                             <div class="form-group">
-                                <textarea id="mensaje" name="mensaje" required></textarea>
-                                <label for="mensaje">Mensaje</label>
+                                <label for="message">Mensaje</label>
+                                <textarea id="message" name="message" required></textarea>
                             </div>
                             <button type="submit" class="btn-submit">Enviar Mensaje</button>
                         </form>
-                        
                     </div>
                 </div>
-                <div class="mapa">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.123456789012!2d-77.12345678901234!3d-11.987654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM13CsDU5JzE1LjYiUyA3N8KwMDcnMjAuNCJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" 
-                        width="100%" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="container">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.123456789012!2d-77.12345678901234!3d-11.987654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM13CsDU5JzE1LjYiUyA3N8KwMDcnMjAuNCJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </section>
@@ -126,6 +358,28 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('toggle');
+            });
+
+            // Form submission handling (you may want to replace this with your own logic)
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would typically send the form data to a server
+                // For this example, we'll just log it to the console
+                console.log('Form submitted');
+                alert('Thank you for your message. We will get back to you soon!');
+                this.reset();
+            });
+        });
+    </script>
 </body>
 </html>
+
