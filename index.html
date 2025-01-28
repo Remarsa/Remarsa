@@ -3,19 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REMARSA - Inicio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <title>REMARSA - Soluciones Industriales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0047ab;
+            --primary-green: #159151;
+            --secondary-blue: #1e3a8a;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #666666;
+            --black: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            padding-top: 80px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            background-color: var(--secondary-blue);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 0.5rem 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links li a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--primary-green);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 21px;
+            position: relative;
+        }
+
+        .menu-toggle div {
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            height: calc(100vh - 80px);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('fotos/inicio.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .about-us {
+            background-color: #2ecc71;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.05));
+            transform: skewX(-30deg);
+            animation: moveBackground 6s linear infinite;
+            z-index: 1;
+        }
+
+        .about-us .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .about-text:hover {
+            color: #d1ffcc;
+            transform: scale(1.05);
+        }
+
+        .about-subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: #f9f9f9;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .about-subtitle:hover {
+            color: #eaffd9;
+            transform: translateY(-3px);
+        }
+
+        .about-us .separator {
+            width: 60px;
+            height: 3px;
+            background-color: #fff;
+            margin: 20px auto;
+            border-radius: 3px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .about-us .separator:hover {
+            width: 100px;
+        }
+
+        .about-us .separator.transparent {
+            background-color: transparent;
+            height: 10px;
+        }
+
+        .mission-vision {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        .mission-vision .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .mission, .vision {
+            flex: 1;
+            padding: 2rem;
+            background-color: var(--gray-light);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .mission:hover, .vision:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission h2, .vision h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .services {
+            padding: 5rem 0;
+            background-color: var(--secondary-blue);
+            color: var(--white);
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translateX(-50%) skewX(-30deg);
+            }
+            100% {
+                transform: translateX(50%) skewX(-30deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--secondary-blue);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .mission-vision .container {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar-blue">
+    <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo" style="margin-left: -75px;">
-                <img src="fotos/logo.png" alt="Logo">
+            <a href="index.html" class="logo">
+                <img src="fotos/logo.png" alt="REMARSA Logo">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="valores.html">Valores</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="politica.html">Política</a></li>
@@ -23,51 +403,66 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
             <div class="menu-toggle">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
             </div>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="container">
-            <h1 class="animate-text hero-logo">
-            </h1>
+        <div class="hero-content">
+            <h1>Soluciones Industriales de Vanguardia</h1>
+            <p>Transformando la industria con innovación y excelencia</p>
         </div>
     </header>
 
     <main>
         <section class="about-us">
             <div class="container">
-                <p class="about-text">Trabajamos para ofrecerte lo mejor</p>
-                <div class="separator"></div> <!-- Línea separadora -->
-        
+                <h2 class="about-text">Trabajamos para ofrecerte lo mejor</h2>
+                <div class="separator"></div>
                 <p class="about-subtitle">Nuestro compromiso es garantizar la calidad y la satisfacción en cada proyecto que realizamos.</p>
-                <div class="separator transparent"></div> <!-- Primer línea separadora -->
-                <div class="separator transparent"></div> <!-- Segunda línea separadora -->
-        
+                <div class="separator transparent"></div>
                 <p class="about-subtitle">Enfocados en soluciones integrales, ofrecemos servicios y recursos para los sectores industrial, manufacturero, construcción y minería.</p>
             </div>
         </section>
-        
-        
 
-        
         <section class="mission-vision">
             <div class="container">
-                <div class="card mission">
-                    <h2>MISIÓN</h2>
-                    <p>Transformar clientes a través de nuestros servicios, generando experiencias extraordinarias, buscamos innovar constantemente para generar valores y bienestar en la sociedad.</p>
+                <div class="mission">
+                    <h2>Misión</h2>
+                    <p>Transformar clientes a través de nuestros servicios, generando experiencias extraordinarias. Buscamos innovar constantemente para generar valores y bienestar en la sociedad.</p>
                 </div>
-                <div class="card vision">
-                    <h2>VISIÓN</h2>
+                <div class="vision">
+                    <h2>Visión</h2>
                     <p>Ser líderes en nuestro sector en lo que competimos y hacer negocios, crear oportunidades e innovar.</p>
                 </div>
             </div>
         </section>
 
-
+        <section class="services">
+            <div class="container">
+                <h2>Nuestros Servicios</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <i class="fas fa-industry"></i>
+                        <h3>Soluciones Industriales</h3>
+                        <p>Optimizamos procesos y aumentamos la eficiencia en entornos industriales.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-hard-hat"></i>
+                        <h3>Construcción</h3>
+                        <p>Proyectos de construcción con los más altos estándares de calidad y seguridad.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Manufactura</h3>
+                        <p>Soluciones innovadoras para optimizar la producción y reducir costos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -80,6 +475,15 @@
                     <p><i class="fas fa-envelope"></i> gerencia01.remarsa@gmail.com</p>
                     <p><i class="fas fa-envelope"></i> ventas01.remarsa@gmail.com</p>
                 </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 REMARSA. Todos los derechos reservados.</p>
@@ -87,12 +491,19 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('toggle');
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
 
 
 
